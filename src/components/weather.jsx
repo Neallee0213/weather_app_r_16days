@@ -1,4 +1,4 @@
-import React from 'react'
+import React from '../../node_modules/react'
 import "./weather.css"
 const weather = (props) => {
     return (
@@ -8,8 +8,11 @@ const weather = (props) => {
                 <h5 className="py-4">
                     <i className={`wi ${props.weatherIcon} display-1`}></i>
                 </h5>
-                {props.temperature? <h1 className="py-2"> Current : {props.temperature}&deg;</h1> : null}
+                {props.temperature? <h1 className="py-2"> Current : {props.temperature}&deg;</h1> &&
+                 <h5><span className="px-4">Wind:{props.wind} m/s</span>
+                 <span className="px-4"> Humidity: {props.humidity}%</span></h5>: null}
                 {minMax(props.temp_min, props.temp_max)}
+                
                 <h4 className="py-3">{props.description.toUpperCase()}</h4>
             </div>
         </div>

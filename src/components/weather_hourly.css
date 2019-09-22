@@ -1,10 +1,33 @@
-.days-weather p{
-    margin-top: -1rem;
+.days-weather{
+    margin-bottom: 2rem;
+    
+}
+
+.days-p p{
+    margin-top:-0.5rem;
+    float: left;
+}
+
+.hum-wind p{
+    margin-bottom: 0rem;
+    vertical-align: middle;   
+}
+.days-weather h3{
+    font-size: 2.5rem;
+}
+
+
+
+/* .days-weather{
+    margin-bottom: 
+}
+p{
+    margin-bottom: 0.2rem;
 
 }
 .days-weather i{
-    margin-top : 0.8rem;
-    margin-bottom : 1rem;
+    margin-top : -0.5rem;
+    
 }
 .days-weather h3{
     margin-bottom : 2rem;
@@ -12,3 +35,7 @@
 .days-weather h5{
     margin-bottom : 3.5rem;
 }
+.days-p{
+    font-size: 2rem;
+    margin-top : -0.5rem;
+} */

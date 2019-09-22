@@ -1,56 +1,129 @@
-import React from 'react'
+import React from '../../node_modules/react'
 import "./weather_hourly.css"
 
 const WeatherHourly = (props) => {
     let weathers = props.weathers.map(weather => {
-        
-        let date = weather.dt_txt.slice(0,10).split("-").join("/");
-        let time = weather.dt_txt.slice(11,-3);
-        let timeRewrote= ""
-        if (time === "00:00"){
-            timeRewrote = "12:00 AM";
-        }else{
-            timeRewrote = "12:00 PM";
+        const days = {
+            'Mon': 'Monday',
+            'Tue': 'Tuesday',
+            'Wed': 'Wednesday',
+            'Thu': 'Thursday',
+            'Fri': 'Friday',
+            'Sat': 'Saturday',
+            'Sun': 'Sunday'
         }
+        const timeRewrote = {
+            "06:00": "Morning",
+            "12:00": "Afternoon",
+            "18:00": "Evening",
+            "21:00": "Night"
+        }
+        // const weatherIcon = {
+        //     Thunderstorm: "wi-thunderstorm",
+        //     Drizzle: "wi-sleet",
+        //     Rain: "wi-storm-showers",
+        //     Snow: "wi-snow",
+        //     Atmosphere: "wi-fog",
+        //     Clear: "wi-day-sunny",
+        //     Clouds: "wi-day-fog"
+        // };
 
-        if (time === "00:00" || time ===  "12:00" ){
-            
+
+        let date = weather.dt_txt.slice(0, 10).split("-");
+        let day = new Date(date).toDateString().split(' ')[0];
+        let time = weather.dt_txt.slice(11, -3);
+
+        let weather_icon = get_WeatherIcon(weather.weather[0].id);
+        // let timeRewrote= ""
+        // if(time === "06:00"){
+        //     timeRewrote = "Morning";
+        // }
+        // else if(time === "12:00"){
+        //     timeRewrote = "Afternoon";
+
+        // }else if(time === "18:00"){
+        //     timeRewrote = "Evening";
+        // }else if(time === "21:00"){
+        //     timeRewrote = "Night";
+        // }
+        // props.get_WeatherIcon()
+
+        if (time === "06:00" || time === "12:00" || time === "18:00" || time === "21:00") {
             return (
-                
-                <div className="col-6 col-sm-3 col-lg-2 days-weather" key ={weather.dt} >
-                            <p>{date}</p>
-                            <p>{timeRewrote}</p>
-                            <i className={`wi ${props.weatherIcon} display-3`}></i>
-                            <h3>{tempRoundUp(weather.main.temp)}&deg;</h3>
-                            <p>Min : {tempRoundUp(weather.main.temp_min)}&deg;</p>
-                            <p>Min : {tempRoundUp(weather.main.temp_max)}&deg;</p>
-                            
-                            <h5>{weather.weather[0].description.toUpperCase()}</h5>
-                            
-                        </div>
-                    
-                    
-                    
-                    )
-                    
-        }else{
+
+                // <div className="col-6 col-sm-3 col-lg-3 days-weather" key ={weather.dt} >
+                <div className="row days-weather d-flex justify-content-center" key={weather.dt} >
+                    <div className="col-1 days-p">
+                        <h5>{days[day]}</h5>
+                        <p>{timeRewrote[time]}</p>
+                    </div>
+                    <div className="col-2 w-icon">
+                        {/* <i className={`wi ${weather_icon} display-4`}></i> */}
+                        <i className={`wi ${get_WeatherIcon(weather.weather[0].id)} display-4`}></i>
+                    </div>
+                    <div className="col-1">
+                        <h3>{tempRoundUp(weather.main.temp)}&deg;</h3>
+                    </div>
+                    <div className="col-2 hum-wind">
+                        <p>Humidity : {tempRoundUp(weather.main.humidity)}%</p>
+                        <p>Wind : {tempRoundUp(weather.wind.speed)}m/s</p>
+                    </div>
+                    <div className="col-1">
+                        <h5>{weather.weather[0].description.toUpperCase()}</h5>
+                    </div>
+
+                </div>
+
+
+
+            )
+
+        } else {
             return null
         }
-            })
-            
-            
-            return (
+    })
+
+
+    return (
         <div className="container">
-            <div className="row">
-                {weathers}
-            </div>
+            {weathers}
         </div>
     )
 }
-const tempRoundUp = (temp)=> {
+const tempRoundUp = (temp) => {
     let num = Math.round(temp)
     return num;
-  }
+}
+const get_WeatherIcon = (rangeId) => {
+
+    let icon;
+    switch (true) {
+        case rangeId >= 200 && rangeId < 232:
+            icon = "wi-thunderstorm";
+            break;
+        case rangeId >= 300 && rangeId <= 321:
+            icon = "wi-sleet";
+            break;
+        case rangeId >= 500 && rangeId <= 521:
+            icon = "wi-storm-showers";
+            break;
+        case rangeId >= 600 && rangeId <= 622:
+            icon = "wi-snow";
+            break;
+        case rangeId >= 701 && rangeId <= 781:
+            icon = "wi-fog";
+            break;
+        case rangeId === 800:
+            icon = "wi-day-sunny";
+            break;
+        case rangeId >= 801 && rangeId <= 804:
+            icon = "wi-day-fog";
+            break;
+        default:
+            icon = "wi-sleet";
+    }
+    return icon
+}
 
 
 export default WeatherHourly
