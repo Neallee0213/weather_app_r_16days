@@ -18,47 +18,22 @@ const WeatherHourly = (props) => {
             "18:00": "Evening",
             "21:00": "Night"
         }
-        // const weatherIcon = {
-        //     Thunderstorm: "wi-thunderstorm",
-        //     Drizzle: "wi-sleet",
-        //     Rain: "wi-storm-showers",
-        //     Snow: "wi-snow",
-        //     Atmosphere: "wi-fog",
-        //     Clear: "wi-day-sunny",
-        //     Clouds: "wi-day-fog"
-        // };
-
 
         let date = weather.dt_txt.slice(0, 10).split("-");
         let day = new Date(date).toDateString().split(' ')[0];
         let time = weather.dt_txt.slice(11, -3);
 
         let weather_icon = get_WeatherIcon(weather.weather[0].id);
-        // let timeRewrote= ""
-        // if(time === "06:00"){
-        //     timeRewrote = "Morning";
-        // }
-        // else if(time === "12:00"){
-        //     timeRewrote = "Afternoon";
-
-        // }else if(time === "18:00"){
-        //     timeRewrote = "Evening";
-        // }else if(time === "21:00"){
-        //     timeRewrote = "Night";
-        // }
-        // props.get_WeatherIcon()
 
         if (time === "06:00" || time === "12:00" || time === "18:00" || time === "21:00") {
             return (
 
-                // <div className="col-6 col-sm-3 col-lg-3 days-weather" key ={weather.dt} >
                 <div className="row days-weather d-flex justify-content-center" key={weather.dt} >
                     <div className="col-1 days-p">
                         <h5>{days[day]}</h5>
                         <p>{timeRewrote[time]}</p>
                     </div>
                     <div className="col-2 w-icon">
-                        {/* <i className={`wi ${weather_icon} display-4`}></i> */}
                         <i className={`wi ${get_WeatherIcon(weather.weather[0].id)} display-4`}></i>
                     </div>
                     <div className="col-1">

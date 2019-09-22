@@ -80,19 +80,9 @@ export default class App extends React.Component {
       this.setState({
         weathers: res.list
       })
-      // this.get_WeatherIcon(this.weatherIcon, res.list[0].weather[0].id);
       const weather_day_api_call = await fetch(
         `https://api.openweathermap.org/data/2.5/weather?q=${city},${country}&appid=${API_KEY}&units=metric`);
       const data = await weather_day_api_call.json();
-      // this.setState({
-      //   city: `${res.city.name}, ${res.city.country}`,
-      //   temperature: this.tempRoundUp(res.list[0].main.temp),
-      //   temp_max: this.tempRoundUp(res.list[0].main.temp_max),
-      //   temp_min: this.tempRoundUp(res.list[0].main.temp_min),
-      //   description: res.list[0].weather[0].description,
-      //   error : false,
-      //   weathers: res.list
-      // }) 
       this.setState({
         city: `${res.city.name}, ${res.city.country}`,
         temperature: this.tempRoundUp(data.main.temp),
@@ -137,8 +127,6 @@ export default class App extends React.Component {
         <WeatherHourly
           weatherIcon={this.state.icon}
           weathers={this.state.weathers}
-          // get_WeatherIcon={this.get_WeatherIcon}
-          // weatherIcon={this.state.icon}
         />
       </div>
     )
