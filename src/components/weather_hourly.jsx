@@ -23,8 +23,6 @@ const WeatherHourly = (props) => {
         let day = new Date(date).toDateString().split(' ')[0];
         let time = weather.dt_txt.slice(11, -3);
 
-        let weather_icon = get_WeatherIcon(weather.weather[0].id);
-
         if (time === "06:00" || time === "12:00" || time === "18:00" || time === "21:00") {
             return (
 

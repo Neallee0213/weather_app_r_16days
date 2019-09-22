@@ -96,7 +96,6 @@ export default class App extends React.Component {
       })
       this.get_WeatherIcon(this.weatherIcon, data.weather[0].id);
 
-      console.log(res)
     }
     else {
       this.setState({ error: true })
