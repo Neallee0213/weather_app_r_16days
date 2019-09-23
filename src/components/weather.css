@@ -16,10 +16,13 @@
     border: none;
     border-bottom: 2px solid tomato;
   }
-  @media (max-width: 574px){
-  .min-max{
-    font-size: 1.3rem;
-  }
-
-
+  
+  @media (max-width: 425px){
+    .min-max{
+      font-size: 1.3rem; 
+    }
+    .wind,
+    .hum{
+      display: block;
+    }
   }

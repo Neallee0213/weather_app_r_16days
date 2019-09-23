@@ -27,21 +27,21 @@ const WeatherHourly = (props) => {
             return (
 
                 <div className="row days-weather d-flex justify-content-center" key={weather.dt} >
-                    <div className="col-md-1  days-p">
+                    <div className="col-3 col-md-2 col-lg-1   days-p">
                         <h5>{days[day]}</h5>
                         <p>{timeRewrote[time]}</p>
                     </div>
-                    <div className="col-md-2  w-icon">
+                    <div className="col-2 col-md-2 col-lg-2   w-icon">
                         <i className={`wi ${get_WeatherIcon(weather.weather[0].id)} display-4`}></i>
                     </div>
-                    <div className="col-md-1 ">
+                    <div className="col-2 col-md-2 col-lg-1  w-temp">
                         <h3>{tempRoundUp(weather.main.temp)}&deg;</h3>
                     </div>
-                    <div className="col-md-2  hum-wind">
+                    <div className="col-5 col-md-3 col-lg-2   hum-wind">
                         <p>Humidity : {tempRoundUp(weather.main.humidity)}%</p>
                         <p>Wind : {tempRoundUp(weather.wind.speed)}m/s</p>
                     </div>
-                    <div className="col-md-1 ">
+                    <div className="col-12 col-md-2 col-lg-1  ">
                         <h5>{weather.weather[0].description.toUpperCase()}</h5>
                     </div>
 

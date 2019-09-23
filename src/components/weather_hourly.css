@@ -22,3 +22,20 @@
         float: none;
     }
 }
+@media (max-width: 425px){
+    .days-p h5,
+    .days-p p{
+        font-size: 0.9rem;
+    }
+    .hum-wind{
+        font-size: 0.9rem;
+    }
+    .w-temp h3{
+        font-size: 1.5rem;
+        
+        margin-left: 6px;
+    }
+    .wi{
+        font-size: 2rem;
+    }
+}
