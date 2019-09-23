@@ -16,9 +16,10 @@
     border: none;
     border-bottom: 2px solid tomato;
   }
-  @media (max-width: 320px){
+  @media (max-width: 574px){
   .min-max{
-    font-size: 1.5rem;
+    font-size: 1.3rem;
   }
+
 
   }

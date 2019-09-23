@@ -9,7 +9,7 @@ const weather = (props) => {
                     <i className={`wi ${props.weatherIcon} display-1`}></i>
                 </h5>
                 {props.temperature? <h1 className="py-2"> Current : {props.temperature}&deg;</h1> &&
-                 <h5><span className="px-4">Wind:{props.wind} m/s</span>
+                 <h5><span className="px-4 wind">Wind:{props.wind} m/s</span>
                  <span className="px-4"> Humidity: {props.humidity}%</span></h5>: null}
                 {minMax(props.temp_min, props.temp_max)}
                 
